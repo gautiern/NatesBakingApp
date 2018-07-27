@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Nate\'s Baking App</string>
+    <string name="ingredients_label">-Ingredients-</string>
+    <string name="steps_label">-Recipe Steps-</string>
+    <string name="servings_label">Servings: </string>
+
+    <string name="prev_button_label">Previous Step</string>
+    <string name="next_button_label">Next Step</string>
+    <string name="widget_default_text">Click here to launch Nate\'s Baking App</string>
+
+
+    <string name="recipe_key" translatable="false">selected_recipe</string>
+    <string name="step_key" translatable="false">selected_step</string>
+    <string name="steps_list_key" translatable="false">steps_list</string>
+    <string name="step_position" translatable="false">step_position</string>
+    <string name="ingredient_list_key" translatable="false">ingredients_list</string>
+    <!-- ExoPlayer fragment -->
+    <string name="player_state">player_state</string>
+    <string name="video_position" translatable="false">video_position</string>
+</resources>

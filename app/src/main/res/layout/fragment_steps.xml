@@ -1,0 +1,20 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.garbu.bakingapp.fragments.StepsFragment"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/steps_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/steps_label"
+        style="@style/HeadingLabel"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/steps_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ></android.support.v7.widget.RecyclerView>
+
+</LinearLayout>
