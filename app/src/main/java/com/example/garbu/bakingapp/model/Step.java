@@ -7,10 +7,10 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by garbu on 7/9/2018.
+ * Class for Step object
  */
 
-public class Step implements Parcelable{
+public class Step implements Parcelable {
 
     @SerializedName("id")
     @Expose

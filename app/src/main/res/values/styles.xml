@@ -12,27 +12,62 @@
         <item name="android:gravity">center_horizontal</item>
         <item name="android:textSize">30sp</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:background">#6D4C41</item>
+        <item name="android:textColor">#FFFFFF</item>
     </style>
 
     <style name="RecipeServings">
         <item name="android:gravity">center_horizontal</item>
         <item name="android:textSize">18sp</item>
         <item name="android:layout_marginTop">10dp</item>
+        <item name="android:textColor">#FFFFFF</item>
 
     </style>
+
     <style name="HeadingLabel">
         <item name="android:gravity">center_horizontal</item>
         <item name="android:textSize">22sp</item>
         <item name="android:paddingBottom">10dp</item>
+        <item name="android:textColor">#6D4C41</item>
     </style>
+
     <style name="StepListItem">
-        <item name="android:layout_height">30dp</item>
-        <item name="android:background">#FFE0B2</item>
+        <item name="android:layout_height">35dp</item>
+        <item name="android:background">#A1887F</item>
         <item name="android:layout_margin">10dp</item>
         <item name="android:gravity">center_vertical</item>
     </style>
+
     <style name="StepText">
         <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#FFFFFF</item>
     </style>
+
+    <style name="IngredientListItem">
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+    </style>
+
+    <style name="IngredientText">
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_marginRight">8dp</item>
+        <item name="android:textColor">#6D4C41</item>
+    </style>
+
+    <style name="DetailText">
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:textColor">#6D4C41</item>
+    </style>
+
+    <style name="RecipeCard">
+        <item name="android:background">#A1887F</item>
+    </style>
+
+    <style name="navButtons">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:background">#A1887F</item>
+    </style>
+
 
 </resources>

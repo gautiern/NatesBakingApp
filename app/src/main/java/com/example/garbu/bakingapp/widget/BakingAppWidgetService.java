@@ -1,6 +1,5 @@
 package com.example.garbu.bakingapp.widget;
 
-import android.appwidget.AppWidgetManager;
 import android.content.Intent;
 import android.widget.RemoteViewsService;
 

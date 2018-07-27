@@ -7,10 +7,10 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by garbu on 7/9/2018.
+ * Class for Ingredient object
  */
 
-public class Ingredient implements Parcelable{
+public class Ingredient implements Parcelable {
 
     @SerializedName("quantity")
     @Expose
@@ -67,6 +67,7 @@ public class Ingredient implements Parcelable{
     public int describeContents() {
         return 0;
     }
+
     public static final Parcelable.Creator<Ingredient> CREATOR = new Creator<Ingredient>() {
 
 

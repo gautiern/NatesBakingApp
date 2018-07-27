@@ -3,8 +3,6 @@ package com.example.garbu.bakingapp.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,10 +15,10 @@ import com.example.garbu.bakingapp.adapters.IngredientAdapter;
 import com.example.garbu.bakingapp.model.Ingredient;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
+ * Fragment for the ingredients list
  */
 public class IngredientFragment extends Fragment {
 
@@ -32,11 +30,11 @@ public class IngredientFragment extends Fragment {
     private Context mContext;
 
 
-
     public IngredientFragment() {
         // Required empty public constructor
     }
-    public static IngredientFragment newInstance(ArrayList<Ingredient> ingredients, Context context){
+
+    public static IngredientFragment newInstance(ArrayList<Ingredient> ingredients, Context context) {
         IngredientFragment ingredientFragment = new IngredientFragment();
         Bundle args = new Bundle();
         args.putParcelableArrayList(context.getString(R.string.ingredient_list_key), ingredients);

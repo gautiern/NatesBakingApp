@@ -11,18 +11,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.garbu.bakingapp.R;
-import com.example.garbu.bakingapp.adapters.IngredientAdapter;
 import com.example.garbu.bakingapp.adapters.StepsAdapter;
-import com.example.garbu.bakingapp.model.Ingredient;
 import com.example.garbu.bakingapp.model.Step;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
- * A simple {@link Fragment} subclass.
+ * This fragment is for the list of steps.
  */
-public class StepsFragment extends Fragment implements StepsAdapter.StepClickHandler{
+public class StepsFragment extends Fragment implements StepsAdapter.StepClickHandler {
 
     private static final String TAG = StepsFragment.class.getSimpleName();
     private ArrayList<Step> mSteps;
@@ -38,17 +35,18 @@ public class StepsFragment extends Fragment implements StepsAdapter.StepClickHan
         mCallback.onStepSelected(steps, position);
     }
 
-    public interface  OnStepClickListener {
+    public interface OnStepClickListener {
         void onStepSelected(ArrayList<Step> steps, int position);
     }
 
+    //verify interface is implemented
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
 
         try {
             mCallback = (OnStepClickListener) context;
-        } catch (ClassCastException e){
+        } catch (ClassCastException e) {
             throw new ClassCastException(context.toString()
                     + " must implement OnStepClickListener");
         }
@@ -58,7 +56,7 @@ public class StepsFragment extends Fragment implements StepsAdapter.StepClickHan
         // Required empty public constructor
     }
 
-    public static StepsFragment newInstance(ArrayList<Step> steps, Context context){
+    public static StepsFragment newInstance(ArrayList<Step> steps, Context context) {
         StepsFragment stepsFragment = new StepsFragment();
         Bundle args = new Bundle();
         args.putParcelableArrayList(context.getString(R.string.steps_list_key), steps);

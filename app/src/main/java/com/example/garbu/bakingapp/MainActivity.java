@@ -5,11 +5,10 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.Toast;
@@ -27,7 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity implements MainAdapter.RecipeClickHandler,SharedPreferences.OnSharedPreferenceChangeListener {
+public class MainActivity extends AppCompatActivity implements MainAdapter.RecipeClickHandler, SharedPreferences.OnSharedPreferenceChangeListener {
     private RecyclerView recipesRV;
     private MainAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -39,14 +38,14 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.Recip
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        int gridCols=1;
+        int gridCols = 1;
         //check if tablet layout or landscape, set 2 grid columns
-        if (findViewById(R.id.tablet_layout)!=null||getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+        if (findViewById(R.id.tablet_layout) != null || getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             gridCols = 2;
         }
 
         recipesRV = findViewById(R.id.recipes_rv);
-        mLayoutManager = new GridLayoutManager(this,gridCols);
+        mLayoutManager = new GridLayoutManager(this, gridCols);
         recipesRV.setLayoutManager(mLayoutManager);
         mAdapter = new MainAdapter(this);
         recipesRV.setAdapter(mAdapter);
@@ -56,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.Recip
 
         RecipeInterface recipeInterface = RecipeInterface.retrofit.create(RecipeInterface.class);
         Call<ArrayList<Recipe>> call = recipeInterface.getRecipes();
-        //make an asynchronous API call
+        //make an asynchronous API call to get recipe data from web resource
         call.enqueue(new Callback<ArrayList<Recipe>>() {
             @Override
             public void onResponse(Call<ArrayList<Recipe>> call, Response<ArrayList<Recipe>> response) {
@@ -92,11 +91,10 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.Recip
         editor.putString(getString(R.string.recipe_key), recipeJson);
         editor.apply();
 
+        //detail intent
         Intent intentToStartDetailActivity = new Intent(this, RecipeDetailActivity.class);
         intentToStartDetailActivity.putExtra(getString(R.string.recipe_key), recipe);
         startActivity(intentToStartDetailActivity);
-
-
 
 
     }
@@ -108,8 +106,7 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.Recip
         Intent intent = new Intent(this, BakingAppWidgetProvider.class);
         intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(this);
-// Use an array and EXTRA_APPWIDGET_IDS instead of AppWidgetManager.EXTRA_APPWIDGET_ID,
-// since it seems the onUpdate() is only fired on that:
+
         int[] ids = appWidgetManager.getAppWidgetIds(new ComponentName(this, BakingAppWidgetProvider.class));
         intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids);
         sendBroadcast(intent);

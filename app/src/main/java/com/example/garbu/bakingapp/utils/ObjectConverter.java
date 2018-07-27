@@ -7,21 +7,23 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 
 /**
- * Created by garbu on 7/24/2018.
+ * Conversion methods for Recipe object and json
  */
 
 public class ObjectConverter {
 
     public static Recipe getRecipeFromJson(String json) {
         Gson gson = new Gson();
-        Type type = new TypeToken<Recipe>() {}.getType();
+        Type type = new TypeToken<Recipe>() {
+        }.getType();
 
         return gson.fromJson(json, type);
     }
 
-    public static String getStringFromRecipe (Recipe recipe) {
+    public static String getStringFromRecipe(Recipe recipe) {
         Gson gson = new Gson();
-        Type type = new TypeToken<Recipe>() {}.getType();
+        Type type = new TypeToken<Recipe>() {
+        }.getType();
 
         return gson.toJson(recipe, type);
     }

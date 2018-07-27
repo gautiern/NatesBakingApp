@@ -30,8 +30,8 @@ public class BakingAppWidgetProvider extends AppWidgetProvider {
 
         //get data from Shared Preferences
         SharedPreferences recipePreference = PreferenceManager.getDefaultSharedPreferences(context);
-        String recipeJson = recipePreference.getString(context.getString(R.string.recipe_key),"");
-        if (recipeJson!="") {
+        String recipeJson = recipePreference.getString(context.getString(R.string.recipe_key), "");
+        if (recipeJson != "") {
             Recipe recipe = ObjectConverter.getRecipeFromJson(recipeJson);
             String recipeName = recipe.getName();
             views.setTextViewText(R.id.widget_recipe_name, recipeName);
@@ -47,13 +47,15 @@ public class BakingAppWidgetProvider extends AppWidgetProvider {
             views.setTextViewText(R.id.widget_recipe_name, context.getString(R.string.widget_default_text));
             launchApp = new Intent(context, MainActivity.class);
         }
+        //Referenced Medium article forTaskStackBuilder info
+        // URL: https://medium.com/google-developers/tasks-and-the-back-stack-dbb7c3b0f6d4
 
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
         stackBuilder.addNextIntentWithParentStack(launchApp);
-        PendingIntent pendingIntent = stackBuilder.getPendingIntent(0,PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
 
         //click handler to launch pending intent
-        views.setOnClickPendingIntent(R.id.recipe_widget,pendingIntent);
+        views.setOnClickPendingIntent(R.id.recipe_widget, pendingIntent);
 
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);

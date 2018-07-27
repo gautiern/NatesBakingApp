@@ -15,10 +15,11 @@
         android:textColor="#ffffff"
         android:textSize="24sp"
         android:textStyle="bold|italic" />
+
     <ListView
         android:id="@+id/widget_ingredient_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/widget_recipe_name"/>
+        android:layout_below="@+id/widget_recipe_name" />
 
 </RelativeLayout>

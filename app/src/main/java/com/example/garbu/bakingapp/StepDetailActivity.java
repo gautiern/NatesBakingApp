@@ -1,36 +1,32 @@
 package com.example.garbu.bakingapp;
 
 import android.content.Context;
-import android.net.Uri;
-import android.os.Handler;
+import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Switch;
 
 import com.example.garbu.bakingapp.fragments.StepDetailFragment;
 import com.example.garbu.bakingapp.model.Step;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+//This activity launches when you select a step and displays a video or image (if any ) and the full text of the step.
+//This activity only launches on smaller devices.  For tablets, all fragments are called in the RecipeDetailActivity.class.
 
 public class StepDetailActivity extends AppCompatActivity {
-    private ArrayList<Step> mSteps;
-    private int mStepPosition;
     @BindView(R.id.prev_step)
     Button prevStepButton;
     @BindView(R.id.next_step)
     Button nextStepButton;
+    private ArrayList<Step> mSteps;
+    private int mStepPosition;
     private Context mContext;
 
-    //This activity launches when you select a step and displays a video or image (if any ) and the full text of the step.
-    //This activity only launches on smaller devices.  For tablets, all fragments are called in the RecipeDetailActivity.class.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +34,7 @@ public class StepDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_step_detail);
         mSteps = new ArrayList<>();
         mContext = getApplicationContext();
+
         //get details passed from parent activity
         ButterKnife.bind(this);
 
@@ -57,6 +54,7 @@ public class StepDetailActivity extends AppCompatActivity {
         //set navigation buttons active/inactive
         setupButtons();
         if (savedInstanceState == null) {
+            //start new details fragment
             FragmentTransaction stepsFT = getSupportFragmentManager().beginTransaction();
             StepDetailFragment stepDetailFragment = StepDetailFragment.newInstance(mSteps.get(mStepPosition), mContext);
             stepsFT.add(R.id.step_details, stepDetailFragment);
@@ -83,12 +81,14 @@ public class StepDetailActivity extends AppCompatActivity {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+        //save the list of steps and the current position
         outState.putParcelableArrayList(getString(R.string.steps_list_key), mSteps);
         outState.putInt(getString(R.string.step_position), mStepPosition);
 
     }
 
     private void displayRecipeDetails() {
+        //display details of recipe selected
         this.setTitle(mSteps.get(mStepPosition).getShortDescription());
         FragmentTransaction stepsFT = getSupportFragmentManager().beginTransaction();
         StepDetailFragment stepDetailFragment = StepDetailFragment.newInstance(mSteps.get(mStepPosition), mContext);

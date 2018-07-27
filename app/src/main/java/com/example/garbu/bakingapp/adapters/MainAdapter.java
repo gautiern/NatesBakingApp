@@ -1,7 +1,6 @@
 package com.example.garbu.bakingapp.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.garbu.bakingapp.R;
-import com.example.garbu.bakingapp.RecipeDetailActivity;
 import com.example.garbu.bakingapp.model.Recipe;
 import com.squareup.picasso.Picasso;
 
@@ -22,6 +20,7 @@ import butterknife.ButterKnife;
 
 /**
  * Created by garbu on 7/10/2018.
+ * This adapter shows all recipe cards when the main activity is launched
  */
 
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
@@ -32,12 +31,12 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
     private List<Integer> mRecipeImages = new ArrayList<>();
     private final RecipeClickHandler mClickHandler;
 
-    public interface RecipeClickHandler{
+    public interface RecipeClickHandler {
         void onClickRecipe(Recipe recipe);
     }
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @BindView(R.id.recipe_image)
         ImageView recipeImage;
         @BindView(R.id.recipe_name)
@@ -48,7 +47,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         public ViewHolder(View itemView) {
             super(itemView);
             //bind the view
-            ButterKnife.bind(this,itemView);
+            ButterKnife.bind(this, itemView);
             itemView.setOnClickListener(this);
         }
 
@@ -59,6 +58,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             mClickHandler.onClickRecipe(mRecipe);
         }
     }
+
     @Override
     public MainAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
@@ -94,12 +94,12 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         ZoiaCs-8vXPNv-bTTiBZ-bobQhF-akfvwY-G7ZyGw-fqm3w1-7j5f7f-aVDG8g-21cL7xJ-82GWhQ-foAd1D-75TXdC-
         abarhy-6Qhtft-39vbJT-9FDjUA-kUvjNe-Z3mWbN-9CYkb9-4Y4hug-bpJGJX-5ZgCYg-8EVJbz-27TSr82
          */
-            mRecipeImages.add(R.drawable.nutella_pie);
-            mRecipeImages.add(R.drawable.brownies);
-            mRecipeImages.add(R.drawable.yellowcake);
-            mRecipeImages.add(R.drawable.cheesecake);
+        mRecipeImages.add(R.drawable.nutella_pie);
+        mRecipeImages.add(R.drawable.brownies);
+        mRecipeImages.add(R.drawable.yellowcake);
+        mRecipeImages.add(R.drawable.cheesecake);
 
-            loadRecipeImage(holder,position);
+        loadRecipeImage(holder, position);
 
     }
 
@@ -122,25 +122,26 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         mClickHandler = clickHandler;
 
     }
-    private void loadRecipeImage(ViewHolder holder, int position){
+
+    private void loadRecipeImage(ViewHolder holder, int position) {
         if (!mRecipe.getImage().equals("")) {
             //if there is an image for the mRecipe then load it
             Picasso.get()
                     .load(mRecipe.getImage())
                     .placeholder(R.drawable.ic_landscape_grey_24dp)
                     .error(R.drawable.content_error)
-                    .resize(100,110)
+                    .resize(100, 110)
                     .centerCrop()
                     .into(holder.recipeImage);
             return;
         } else {
             //either load a temporary image or an error image
-            while (position <= mRecipeImages.size()){
+            while (position <= mRecipeImages.size()) {
                 Picasso.get()
                         .load(mRecipeImages.get(position))
                         .placeholder(R.drawable.ic_landscape_grey_24dp)
                         .error(R.drawable.content_error)
-                        .resize(100,110)
+                        .resize(100, 110)
                         .centerCrop()
                         .into(holder.recipeImage);
                 return;

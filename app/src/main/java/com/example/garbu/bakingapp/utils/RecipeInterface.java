@@ -10,13 +10,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 
 /**
- * Created by garbu on 7/9/2018.
+ * Interface for Retrofit
  */
 
 public interface RecipeInterface {
 
-        @GET("baking.json")
-        Call<ArrayList<Recipe>> getRecipes();
+    @GET("baking.json")
+    Call<ArrayList<Recipe>> getRecipes();
 
 
     Retrofit retrofit = new Retrofit.Builder()

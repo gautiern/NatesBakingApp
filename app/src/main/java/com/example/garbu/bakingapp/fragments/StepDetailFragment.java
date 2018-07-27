@@ -14,7 +14,6 @@ import android.widget.TextView;
 import com.example.garbu.bakingapp.R;
 import com.example.garbu.bakingapp.model.Step;
 import com.google.android.exoplayer2.ExoPlayerFactory;
-import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.source.ExtractorMediaSource;
 import com.google.android.exoplayer2.source.MediaSource;

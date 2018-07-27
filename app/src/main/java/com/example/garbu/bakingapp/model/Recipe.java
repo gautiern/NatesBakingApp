@@ -6,15 +6,13 @@ import android.os.Parcelable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-
 import java.util.ArrayList;
-import java.util.List;
 
 /**
- * Created by garbu on 7/9/2018.
+ * Class for Recipe object
  */
 
-public class Recipe implements Parcelable{
+public class Recipe implements Parcelable {
 
     @SerializedName("id")
     @Expose
@@ -112,6 +110,7 @@ public class Recipe implements Parcelable{
     public int describeContents() {
         return 0;
     }
+
     public static final Parcelable.Creator<Recipe> CREATOR = new Creator<Recipe>() {
 
 
